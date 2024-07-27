@@ -1,0 +1,11 @@
+FROM node:18.20.3-alpine
+
+WORKDIR /usr/app
+
+COPY package.json .
+RUN npm install
+
+# But this will copy node_modules from the host machine to the container and i dont want that
+COPY . . 
+
+CMD ["npm", "run", "start"]
